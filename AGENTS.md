@@ -6,10 +6,26 @@ Guidance for AI coding agents working with this repository.
 
 ## Repository Structure
 
+This repo is a **Claude Code plugin** (`d9-skills`) and an Agent Skills repository.
+
 ```
+.claude-plugin/
+  plugin.json             # Plugin manifest
+commands/
+  skillops.md             # /d9-skills:skillops slash command
+hooks/
+  hooks.json              # SessionStart briefing + detect-xp reminder hooks
+  session-briefing.sh
+  detect-xp-reminder.sh
 skills/
   {skill-name}/
-    SKILL.md              # Required: skill manifest (Agent Skills spec)
+    SKILL.md              # Operational skills (12)
+  skillops/
+    {skill-name}/
+      SKILL.md            # Pipeline skills (8)
+scripts/
+  verify-skill-structure.mjs
+  generate-skill-pr-comment.js
 ```
 
 ## Skills Format
@@ -50,7 +66,20 @@ Markdown instructions. Recommended sections:
 3. Ensure `name` in frontmatter matches the directory name
 4. Open a PR
 
-Skills are typically contributed via the SkillOps pipeline from the [d9 main repo](https://github.com/LaWebcapsule/directus9). Run `/skillops` after a debugging session.
+Skills are typically contributed via the SkillOps pipeline. Run `/d9-skills:skillops` (or `/skillops` from the main d9 repo) after a debugging session.
+
+## SkillOps Pipeline
+
+The pipeline skills live in `skills/skillops/` and handle the full contribution flow:
+
+1. **detect-xp** — Detect reusable patterns
+2. **match-existing** — Compare against existing skills
+3. **anonymize-session** — Strip PII and decontextualize
+4. **format-skill** — Generate SKILL.md
+5. **refine-skill-design** — Quality audit (ASQM >= 17)
+6. **submit-skill** — Clone, branch, push, PR
+7. **curate-skills** — CI scoring and audit
+8. **discover-skills** — Search external catalogs
 
 ## Validation
 
