@@ -1,0 +1,19 @@
+{
+  "name": "d9-skills",
+  "version": "1.0.0",
+  "description": "Agent Skills for d9 (Directus 9 fork by La Webcapsule)",
+  "author": "La Webcapsule",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LaWebcapsule/d9-skills.git"
+  },
+  "keywords": [
+    "agent-skills",
+    "directus",
+    "d9",
+    "ai",
+    "claude-code",
+    "cursor"
+  ]
+}
