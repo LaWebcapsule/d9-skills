@@ -1,0 +1,5 @@
+{
+  "name": "d9-skills",
+  "description": "Agent Skills + SkillOps pipeline for d9 (Directus 9 fork). Includes 12+ operational skills from real debugging sessions and the full contribute-back pipeline.",
+  "version": "1.0.0"
+}

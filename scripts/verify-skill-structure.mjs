@@ -155,7 +155,10 @@ let skillDirs = [];
 
 if (args.includes('--all')) {
   const base = resolve('skills');
-  skillDirs = findAllSkillDirs(base);
+  skillDirs = findAllSkillDirs(base).filter(d => d.split(/[/\\]/).pop() !== 'skillops');
+  // Also scan skills/skillops/ subdirectories
+  const pipelineBase = join(base, 'skillops');
+  skillDirs = skillDirs.concat(findAllSkillDirs(pipelineBase));
 } else if (args.length > 0) {
   skillDirs = args.map(a => resolve(a));
 } else {
